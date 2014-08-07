@@ -1,0 +1,13 @@
+{% extends 'base_template.html' %}
+
+{% block content %}
+
+<div>
+    <br><br>
+    <div>Hometown: {{ profile_data.hometown.name }}</div>
+    <div>Full Name: {{ profile_data.name }}</div>
+    <div>Favorite Teams: {% for team in profile_data.favorite_teams %}{{ team.name }} {% endfor %}</div>
+    <div>Picture: <img src="{{ profile_picture }}"/> </div>
+</div>
+
+{% endblock content %}

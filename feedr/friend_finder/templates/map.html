@@ -1,0 +1,18 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+
+{% block extra_head %}
+     <script type="text/javascript">
+        var photoData = {{ photo_json|safe }};
+    </script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/map.css" %}">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAILwJYnDJsf3D6ImqDrI9C-RSye1nMpak"></script>
+{#    <script src="https://maps.gstatic.com/maps-api-v3/api/js/17/13/main.js" type="text/javascript"></script>#}
+    <script type="text/javascript" src="{% static "js/map.js" %}"></script>
+{% endblock extra_head %}
+
+{% block content %}
+    <div id="map-container">
+        <div id="map_canvas"></div>
+    </div>
+{% endblock content %}
