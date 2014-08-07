@@ -38,6 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
+    'social.apps.django_app.default',
+    'debug_toolbar',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,6 +50,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
+
 )
 
 ROOT_URLCONF = 'feedr.urls'
@@ -88,3 +93,21 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1467652313495761'
+SOCIAL_AUTH_FACEBOOK_SECRET = '1b5a66c5658c0ba3a6e3da83c3f918e4'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile', 'user_photos', 'user_likes', 'user_hometown']
+
+LOGIN_REDIRECT_URL = 'home'
